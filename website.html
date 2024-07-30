@@ -1,0 +1,221 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Satpol-PP</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: white;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5rem;
+            background-color: white;
+        }
+        
+        .navbar ul {
+            list-style: none;
+        }
+        
+        .navbar-logo {
+            height: 7rem;
+        }
+        
+        .navbar-group {
+            display: flex;
+            gap: 3rem;
+            padding: 2rem;
+        }
+        
+        .navbar-item {
+            padding: 0.5rem;
+            position: relative;
+            text-wrap: nowrap;
+            cursor: pointer;
+            border-bottom: 1px solid black transparent;
+        }
+        
+        .navbar-item:hover {
+            border-color: 1px solid black;
+        }
+        
+        .navbar .navbar-down {
+            position: absolute;
+            top: 100%;
+            left: 0 class="navbar-item";
+            background-color: white;
+            padding: 1rem;
+            border: 1px solid black;
+            display: none;
+        }
+        
+        .navbar-down.navbar-expand {
+            display: block;
+            animation: menureveal 250ms linear;
+        }
+        
+        @keyframes menureveal {
+            from {
+                transform: translateY(-0.5rem);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .navbar .navbar-action button {
+            border: 1px;
+            background: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+        /*.navbar .navbar-action button:hover {}*/
+        
+        .hero-container .hero-item {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero-container .hero-item::before {
+            content: "";
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            background-image: linear-gradient(to top, black, transparent);
+        }
+        
+        .hero-container .hero-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero-container .hero-content {
+            position: absolute;
+            /*top: 0;
+            */
+            color: rgb(255, 255, 255);
+            text-shadow: solid black 3px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        
+        .hero-item .hero-content {
+            margin-bottom: 2rem;
+            /*display: flex;*/
+        }
+        
+        .hero-container .hero-action {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            font-size: 2rem;
+            text-transform: uppercase;
+        }
+        
+        .hero-container .hero-title {
+            font-size: 4.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <nav class="navbar">
+        <img class="navbar-logo" src="img/1.jpg" alt="logo Satpol-PP" />
+        <ul class="navbar-group">
+            <li class="navbar-item">Beranda</li>
+            <li class="navbar-item">
+                Profil
+                <ul class="navbar-down">
+                    <li class="navbar-item">Struktur Organisasi</li>
+                    <li class="navbar-item">Profil Pemimpin</li>
+                    <li class="navbar-item">Visi Misi</li>
+                    <li class="navbar-item">Sejarah</li>
+                    <li class="navbar-item">Tugas Pokok dan Fungsi</li>
+                </ul>
+            </li>
+            <li class="navbar-item">
+                Publikasi
+                <ul class="navbar-down">
+                    <li class="navbar-item">Berita</li>
+                    <li class="navbar-item">Informasi Kegiatan</li>
+                </ul>
+            </li>
+            <li class="navbar-item">
+                Produk Hukum
+                <ul class="navbar-down">
+                    <li class="navbar-item">Undang-Undang</li>
+                    <li class="navbar-item">Peraturan Pemerintah</li>
+                    <li class="navbar-item">Peraturan Daerah</li>
+                    <li class="navbar-item">Peraturan Walikota Tasikmalaya</li>
+                    <li class="navbar-item">Keputusan Kepala Satpol PP</li>
+                </ul>
+            </li>
+            <li class="navbar-item">
+                Informasi Publik
+                <ul class="navbar-down">
+                    <li class="navbar-item">Laporan Satpol PP</li>
+                    <li class="navbar-item">Program Kerja Satpol PP</li>
+                    <li class="navbar-item">Perjanjian Kinerja</li>
+                </ul>
+            </li>
+        </ul>
+        <div class="navbar-action">
+            <button>Search</button>
+        </div>
+    </nav>
+
+    <!--Hero -->
+    <div class="hero-container">
+        <div class="hero-item">
+            <img src="img/bg1.jpg" alt="" />
+            <div class="hero-content">
+                <h2 class="hero-title">
+                    Satuan Polisi Pamong Praja Kota Tasikmalaya
+                    <!-- </h2>
+                <a class="hero-action" href=" # ">Selengkapnya</a>-->
+            </div>
+        </div>
+    </div>
+
+    <!--JS-->
+    <script>
+        const navItem = document.querySelectorAll(".navbar-group> .navbar-item");
+        navItem.forEach((nav) => {
+            const navDown = nav.querySelector(".navbar-down");
+            if (navDown) {
+                nav.addEventListener("mouseenter", () => {
+                    navDown.classList.add("navbar-expand");
+                });
+                nav.addEventListener("mouseleave", () => {
+                    navDown.classList.remove("navbar-expand");
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
